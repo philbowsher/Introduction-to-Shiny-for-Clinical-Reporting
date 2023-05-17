@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+```{r}
+library(tidyverse)
+library(haven)
+library(plotly)
+```
+
+Import
+```{r}
+dmae <- read_sas("https://github.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/raw/master/Examples/data/dmae.sas7bdat", 
+    NULL)
+
+dmae
+```
+
+Viz
+```{r}
+ggplot(dmae) +
+  aes(x = AESEV) +
+  geom_bar(fill = "#112446") +
+  theme_minimal()
+```
+
+Plotly (Local vs Server Side)
+```{r}
+dv1 <- ggplot(dmae) +
+  aes(x = AESEV) +
+  geom_bar(fill = "#112446") +
+  theme_minimal()
+
+ggplotly(dv1)
+
+```
+
